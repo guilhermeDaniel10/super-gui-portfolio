@@ -24,6 +24,20 @@ export class Player {
     this.canvasContext = c;
   }
 
+  getPositions() {
+    return {
+      x: this.position.x,
+      y: this.position.y,
+      width: this.width,
+      height: this.height,
+      velocity: this.velocity,
+    };
+  }
+
+  getKeys() {
+    return this.keys;
+  }
+
   draw() {
     this.canvasContext.fillStyle = "red";
     this.canvasContext.fillRect(
@@ -46,14 +60,12 @@ export class Player {
     }
   }
 
-  playerSideMovementVelocity() {
-    if (this.keys.right.pressed) {
-      this.velocity.x = 5;
-    } else if (this.keys.left.pressed) {
-      this.velocity.x = -5;
-    } else {
-      this.velocity.x = 0;
-    }
+  setPlayerYVelocity(yVelocity) {
+    this.velocity.y = yVelocity;
+  }
+
+  setPlayerXVelocity(xVelocity) {
+    this.velocity.x = xVelocity;
   }
 
   jump() {
